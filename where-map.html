@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Spatial Data Service Demo</title>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+<![endif]-->
+<script type='text/javascript'>
+var map
+
+function init()
+{
+
+    map = new L.Map ("map1");
+    var attrib="Map data copyright OpenStreetMap contributors, CC-by-SA";
+
+    var layerOSM = new L.TileLayer
+        ("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            { attribution: attrib } );
+            
+    map.addLayer(layerOSM);
+
+    var pos = new L.LatLng(44.92,-93.3);
+
+    map.setView(pos, 15);
+
+    map.on("click",onMapClick)
+}
+
+var popup = L.popup();
+
+function onMapClick(e)
+{
+
+
+    $.ajax({
+      type: 'GET',
+       url: "http://services.dnr.state.mn.us/api/where/v1/?x=" + e.latlng.lng + "&y=" + e.latlng.lat,
+  dataType: 'jsonp',
+  jsonpCallback: 'jsonp',
+contentType: "application/json", 
+success: function(jsonp) {
+if (jsonp.result.lake !== null) 
+  {lake = jsonp.result.lake.name;}
+else 
+  {lake = 'N/A';}
+  $('div.result-string').text("API Call Results:  "+JSON.stringify(jsonp.result)); 
+popup
+    .setLatLng([e.latlng.lat, e.latlng.lng])
+    .setContent('<b>Municipality: </b>' + jsonp.result.municipality.name + '<br /> <b>County: </b>' + jsonp.result.county.name + '<br /> <b>County FIPS: </b>' + jsonp.result.county.fips +'<br /> <b>Elevation: </b>' + jsonp.result.elevation  + '<br /> <b>Lake: </b>' + lake  + '<br /> <b>Coords Lon/Lat: </b>' + jsonp.result.point['epsg:4326'])
+    .openOn(map);  }
+   });
+}
+</script>
+</head>
+<body onload="init()">
+<h1>MnDNR 'Where API' Demo Map</h1>
+<h4>(Click Me!)</h4>
+<div id="map1" style="width:800px; height:600px"> </div>
+<div id="code" class="result-string" style="width:800px; height:300px; padding:10px"></div>
+</body>
+</html>

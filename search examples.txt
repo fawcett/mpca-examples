@@ -1,0 +1,23 @@
+Example Strategy
+
+Find all of the Citizen Monitoring Program stations in Cook County
+
+Search based on Geographic Areas:
+
+= Look up the different geographic area types
+
+-look up geographic areas of type county
+
+- get the code that you need
+http://services.pca.state.mn.us/api/v1/surfacewater/cmp/sites?specificGeoAreaCode=county__031
+
+
+
+
+Find impairments in Minneapolis
+
+Select one of the water bodies and find all of the sample stations on it
+
+Get sample results from 
+
+or get stream sample results for all water bodies in Minneapolis

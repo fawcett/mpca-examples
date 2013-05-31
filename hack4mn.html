@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link href='stylesheets/pig.css' rel='stylesheet' type='text/css' />
+        <script src='javascripts/pig.js'></script>
+    </head>
+<body>
+<div class='slide'>
+   <h2>Quick Overview of MPCA APIs</h2>
+   <p>David Fawcett  MN.IT @ MPCA </p>
+   <p>david.fawcett@state.mn.us</p>
+   <p><div class="logo"><img src="images/mnitlogo.jpg" height="71" width="186"</img></div></p>
+   <p>MapServer, OSGEO, OSM, Python, FOSS4G NA</p>
+   <p>@davidfawcett</p>
+</div>
+<div class='slide'>   
+   <h2>Points</h2>
+   <p>Data Philosophy </p>
+   <p>Past, Present, Future </p>
+   <p>Intro to MPCA API </p>
+   <p>Examples </p>
+</div>
+<div class='slide'>
+   <h2>The Past </h2>
+   <p>Strategic Goal - Open the Data </p>
+   <p>Environmental Data Access > 10 yrs </p>
+   <p>Surface Water, Air, Groundwater, 'Neighborhood' </p>
+   <p>Web + CSV and Excel download </p>
+</div>
+<div class='slide'>
+   <h2>The Present </h2>
+   <p>Watershed Pages</p>
+   <p><a href="http://cf.pca.state.mn.us/water/watershedweb/wdip/index.cfm" target="_blank">Simple</a></p>
+   <p><a href="http://cf.pca.state.mn.us/water/watershedweb/wdip/search_more.cfm" target="_blank">Advanced</a></p>
+   <p>RESTful Services</p>
+</div>
+<div class='slide'>
+   <h2>The Future </h2>
+   <p>Groundwater services</p>
+   <p>What's in My Neighborhood - documents</p>
+</div>
+
+<div class='slide'>
+   <h2>Minnesota Geocommons</h2>
+   <p>One Place for MN Spatial Data</p>
+   <p>CKAN Platform</p>
+   <p>By July 2014</p>
+</div>
+<div class='slide'>   
+   <h3>Your input is <em>highly</em> valued!</h3>
+   <p>Any ideas on data to publish or how to publish are welcome.</p>
+   <p>david.fawcett@state.mn.us</p>
+</div>
+<div class='slide'>
+   <h2>Enough already, the services!</h2>
+   <p>What data can I get?</p>
+   <p><i>Everything that you can see in the apps...</i></p>
+   <p>What can I do with it?</p>
+   <p><i>Whatever you want to...</i></p>
+</div>
+<div class='slide'>
+   <h2>Search for</h2>
+   <p>waterbodies</p>
+   <p>monitoring stations</p>
+   <p>Assessments</p>
+   <p>Impairments</p>
+   <p>Projects</p>
+</div>
+<div class='slide'>
+   <h2>Get details</h2>
+   <p>analytical results</p>
+   <p>impairment causes</p>
+   <p>contact info</p>
+</div>
+<div class='slide'>
+   <h2>Show me the data</h2>
+   <p><a href="http://services.pca.state.mn.us" target="_blank">services.pca.state.mn.us</a></p>
+</div>
+<div class='slide'>
+   <h2>How does it work?</h2>
+   <p>GET (URL) Request</p>
+   <p>Parameters<a href="http://services.pca.state.mn.us/api/v1/surfacewater/monitoring-stations?stationId=27-0016-00-201&format=text" target="_blank">/monitoring-stations?stationId=27-0016-00-201</a></p>
+   <p>Returns data in JSON format</p>
+</div>
+<div class='slide'>
+   <h2></h2>
+   <p>GET (URL) Request</p>
+   <p>Parameters<a href="http://services.pca.state.mn.us/api/v1/surfacewater/monitoring-stations?stationId=27-0016-00-201&format=text" target="_blank">/monitoring-stations?stationId=27-0016-00-201</a></p>
+   <p>Returns data in JSON format</p>
+   <p><code>"data":[{"stationName":"BLACK LAKE", "resultCount":"44"}]</code></p>
+</div>
+
+<div class='slide'>Geographic Area</div>
+<div class='slide'>Other Specific API Examples</div>
+<div class='slide'>
+<p>DNR Where API Map Example</p>
+<p>http://services.dnr.state.mn.us/api/where/v1/usage.html</p>
+<p><a href="where-map.html">Demo</a></p>
+</div>
+<div class='slide' style='background-image:url(http://farm3.static.flickr.com/2506/5757000880_509440308e_z.jpg)'> images too</div>
+<div class='slide'>JS+CSS <a href='https://github.com/tmcw/pig'>github.com/tmcw/pig</a></div>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t = document.createElement('script');
+    t.type = 'text/javascript';
+    t.async = true;
+    t.id = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4e36eb1ef5a1f53d6f000001');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
