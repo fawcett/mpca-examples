@@ -4,7 +4,8 @@ body {
   background-size:100%;
   margin:0;
   padding:0;
-  color:#111;
+  #color:#111;
+  color: #222222;
 }
 
 h1, h2, h3, p { margin:0; }
@@ -22,7 +23,9 @@ b {
 
 a {
   color: #006666;
+  text-decoration: none;
 }
+
 
 p {
     padding:10px 0;
@@ -53,4 +56,17 @@ div.slide {
    height: 96px;
 float:left; 
 }
+.leglogo {
+   width: 98px; 
+   height: 183px;
+}
 .clear { clear: both;}
+
+.pad1 {
+    padding:20px;
+}
+
+.overlay {
+    background:#222;
+}
+

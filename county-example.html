@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mpca-examples : Examples on how to use the MPCA Data API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>County Search Example</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+
+          <h1 id="project_title">mpca-examples</h1>
+          <h2 id="project_tagline">Examples on how to use the MPCA Data API</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+<h2>Find Citizen Monitoring Sites in Cook County</h2>
+<p>To answer some data queries, it may take multiple API calls.  This example walks through the logic and API calls to find all of the Citizen's Monitoring Program Sites in Cook County</p>
+<h3>Get the specificAreaCode for Cook County</h3>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/geographic-areas?geoAreaTypeCode=county&format=text</code></pre>
+<p>The geographic-areas route will return all of the unique geographic areas available.  (e.g. the code and name for each county, city, legislative district, etc.)  By adding the geoAreaTypeCode parameter, the results are limited to counties. Scrolling through the returned data, you can see the element for cook county.</p>
+<pre><code>{"specificAreaCode" : "county__031",
+ "specificAreaName" : "Cook",
+ "geoAreaTypeCode" : "county"},</code></pre>
+      
+<h3>Get the CMP Sites</h3>
+<p>The specificAreaCode value above is now passed as the value of the specificGeoAreaCode parameter in a call to the route that gets CMP sites.  (Notice that these two 'area code' parameters have similar, but not identical names)</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/cmp/sites?specificGeoAreaCode=county__031&format=text</code></pre>
+     
+      
+      </section>
+    </div>
+
+
+    
+
+  </body>
+</html>
