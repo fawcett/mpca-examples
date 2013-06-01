@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mpca-examples : Examples on how to use the MPCA Data API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>County Search Example</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+
+          <h1 id="project_title">mpca-examples</h1>
+          <h2 id="project_tagline">Examples on how to use the MPCA Data API</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+<h2>Examples on MPCA Data API Usage</h2>
+<h3>Searching by Name</h3>
+<p>The MPCA Data API /water-units/ route has a parameter for searching by name. If the wuSearchString parameter is used, results will include all water bodies that have a name, county, or city, township, unorganized name that match the string. This first call returns 25 water units. </p>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/water-units?wuSearchString=harr</code></pre>
+<p>By adding a second string to the wuSearchString parameter, the number of records is reduced.  In this case, adding 'henn' returns only one item, the Lake Harriet in Hennepin County</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/water-units?wuSearchString=harr+henn</code></pre>
+
+<h3>Specifying Returned Fields</h3>
+<p>By adding the fields parameter with a list of field names to be included, you can explicitly set the fields that are returned.  This can significantly reduce the size of the data being returned.</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/water-units?wuSearchString=harr+henn&fields=wuDisplayName,wid</code></pre>
+      
+<h3>Data Formats</h3>
+<p>The format parameter is used to specify the format of the data returned by the request.  Available formats are json, jsonp, text, csv, xls, ods, and tab. The default format is json.  The csv or tabs formats could be used in conjunction with a library like <a href="http://d3js.org/">d3.js</a> to create charts on the fly.</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/monitoring-stations/results?stationId=62-0061-00-101&format=csv</code></pre>
+     
+      
+      </section>
+    </div>
+
+
+    
+
+  </body>
+</html>
