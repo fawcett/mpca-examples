@@ -43,6 +43,14 @@ div.slide {
 }
 
 .logo {
-   width: 186px; /* I took the width from your post and placed it in css */
+   width: 186px; 
    height: 71px;
+       float:left;
+       margin-right:15px; 
 }
+.mpcalogo {
+   width: 150px; 
+   height: 96px;
+float:left; 
+}
+.clear { clear: both;}
