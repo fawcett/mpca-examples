@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>County Search Example</title>
+    <title>Surface Water API Examples</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
         <header class="inner">
 
           <h1 id="project_title">mpca-examples</h1>
-          <h2 id="project_tagline">Examples on how to use the MPCA Data API</h2>
+          <h2 id="project_tagline">Examples on how to use the MPCA Surface Water Data API</h2>
 
         </header>
     </div>
@@ -27,7 +27,8 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
 
-<h2>Examples on MPCA Data API Usage</h2>
+<h2>Examples on how to use the MPCA Surface Water Data API</h2>
+<p>The Surface Water API was created to support applications related to the <a href="http://www.pca.state.mn.us/index.php/water/water-types-and-programs/surface-water/watershed-approach/watershed-data-integration-project.html">Watershed Data Integreation Project</a>. An easy way to get familiar with the data and how it is all related is to explore the applications linked there. All of the API routes have <a href="http://services.pca.state.mn.us/surfacewater">documentation</a> pages that provide the route URIs, parameters, and returned data elements.</p>
 <h3>Searching by Name</h3>
 <p>The MPCA Data API /water-units/ route has a parameter for searching by name. If the wuSearchString parameter is used, results will include all water bodies that have a name, county, or city, township, unorganized name that match the string. This first call returns 25 water units. </p>
 <pre><code>http://services.pca.state.mn.us/api/v1/surfacewater/water-units?wuSearchString=harr</code></pre>

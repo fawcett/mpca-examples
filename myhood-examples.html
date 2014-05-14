@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mpca-examples : Examples on how to use the MPCA Data API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>What's In My Neighborhood API</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+
+          <h1 id="project_title">mpca-examples</h1>
+          <h2 id="project_tagline">Examples on how to use the MPCA What's In My Neighborhood Data API</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+<h2>MPCA What's In My Neighborhood API</h2>
+<h3>Searching</h3>
+<p>These API routes support the <a href="http://www.pca.state.mn.us/index.php/data/wimn-whats-in-my-neighborhood/whats-in-my-neighborhood.html">What's In My Neighborhood Application</a>.  An easy way to become familiar with the data and the context that it exists in is to explore the application.  You can also look at the <a href="http://services.pca.state.mn.us/wimn">documentation</a> pages to help you understand how to use the routes.</p>
+<p>The site is the core organizing unit for What's In My Neighborhood.  A site is a place of interest to the agency and is generally defined by ownership and location.</p>
+<p>The API route /sites/ has a parameter called searchString for searching multiple database fields simultaneously.</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=sugar&format=text</code></pre>
+<p>By adding a second string to the searchString parameter, the number of records is reduced.  In this case, adding 'crystal' cuts the number of returned records in half.</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&format=text</code></pre>
+
+<h3>Specifying Returned Fields</h3>
+<p>By adding the fields parameter with a list of field names to be included, you can explicitly set the fields that are returned.  This can significantly reduce the size of the data being returned. If we wanted to make a simple map, this call could be useful.</p>
+<pre><code>http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=text</code></pre>
+
+<h3>Documents!</h3>
+<p>The MPCA has begun make some documents available through the API.  Different document types are being added as they are audited to ensure that non-public documents are not published.  At this time, the documents are primarily legal assurance letters related to site investigations and cleanups.</p>
+<p>For documents, you first make an api call to get information about all of the documents available for a site, and then make calls with specific document IDs to retreive the documents.</p>
+<pre><code>
+# get a list of documents based on the siteId  
+http://services.pca.state.mn.us/api/v1/wimn/sites/documents?siteId=326&format=text
+
+# get a document by specifying one of the document IDs from the above list
+http://services.pca.state.mn.us/api/v1/wimn/sites/documents/document?documentId=428366
+</code></pre>
+<p>This document from an incident report includes maps, photos, lab results, etc. Note:  The file size is about 12 MB! </p>
+<pre><code>
+http://services.pca.state.mn.us/api/v1/wimn/sites/documents/document?documentId=1002438
+</code></pre>
+
+<h3>Getting more site details</h3>
+<p>Once you identify a site that you are interested in, you can then make additional calls to get more details about the site.</p>
+<pre><code>
+# site activities
+http://services.pca.state.mn.us/api/v1/wimn/sites/activities?siteId=210&format=text
+
+# permit actions
+http://services.pca.state.mn.us/api/v1/wimn/sites/permit-actions?siteId=210&format=text
+
+# inspection actions
+http://services.pca.state.mn.us/api/v1/wimn/sites/inspection-actions?siteId=210&format=text
+
+# enforcement actions
+http://services.pca.state.mn.us/api/v1/wimn/sites/enforcement-actions?siteId=210&format=text
+
+# MPCA contacts for the site
+http://services.pca.state.mn.us/api/v1/wimn/sites/contacts?siteId=210&format=text
+
+# MPCA file managers to contact if you want to review the files
+http://services.pca.state.mn.us/api/v1/wimn/sites/file-managers?siteId=210&format=text
+
+</code></pre>
+
+<h3>Data Formats</h3>
+<p>The format parameter is used to specify the format of the data returned by the request.  Available formats are json, jsonp, text, csv, xls, ods, and tab. The default format is json.  The csv or tabs formats could be used in conjunction with a library like <a href="http://d3js.org/">d3.js</a> to create charts on the fly.  Using jsonp can help you get around the Same Origin Policy when building javascript Web apps.</p>
+<pre><code>
+#json
+http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=json
+
+#csv
+http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=csv
+
+#tab
+http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=tab
+
+#xls
+http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=xls
+
+#jsonp
+http://services.pca.state.mn.us/api/v1/wimn/sites?searchString=crystal+sugar&fields=siteName,lat,long&format=jsonp&callback=myCallbackFunc
+</code></pre>
+
+     
+      
+      </section>
+    </div>
+
+
+    
+
+  </body>
+</html>
